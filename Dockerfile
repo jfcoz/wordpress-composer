@@ -1,4 +1,4 @@
-FROM --platform=$TARGETPLATFORM dunglas/frankenphp AS base
+FROM --platform=$TARGETPLATFORM dunglas/frankenphp@sha256:6c1cc3ab856ce8107c3642bd522ca346760cdae735b8f8b849760769451a497f AS base
 USER root
 RUN install-php-extensions \
       exif \
@@ -19,7 +19,7 @@ USER www-data
 FROM --platform=$TARGETPLATFORM base AS build
 USER root
 RUN apt-get update && apt-get install -y zip git
-COPY --from=composer/composer:2-bin /composer /usr/bin/composer
+COPY --from=composer/composer:2-bin@sha256:46aa846000de2d97fb08ae4a793fddb921023e502b78978a95f7ff1a78f3395b /composer /usr/bin/composer
 USER www-data
 WORKDIR /var/www/html
 ADD --chown=www-data:www-data composer.json .
