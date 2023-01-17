@@ -1,0 +1,70 @@
+{
+  "name": "jfcoz/wordpress-composer",
+  "description": "Wordpress installed with Composer, to use in Kubernetes",
+  "type": "project",
+  "repositories": [
+    {
+      "type": "composer",
+      "url": "https://wpackagist.org",
+      "only": [
+        "wpackagist-plugin/*",
+        "wpackagist-theme/*"
+      ]
+    },
+    {
+      "type": "composer",
+      "url": "https://wp-languages.github.io",
+      "only": [
+        "koodimonni-language/*",
+        "koodimonni-plugin-language/*",
+        "koodimonni-theme-language/*"
+      ]
+    }
+  ],
+  "config": {
+    "vendor-dir": "wp-content/vendor",
+    "allow-plugins": {
+      "composer/installers": true,
+      "johnpbloch/wordpress-core-installer": true,
+      "boxuk/wp-muplugin-loader": true,
+      "koodimonni/composer-dropin-installer": true
+    }
+  },
+  "require": {
+    "php": ">=8.2",
+    "johnpbloch/wordpress": "6.1.1",
+    "wp-cli/wp-cli-bundle": "2.7.1",
+    "boxuk/wp-muplugin-loader": "2.0.0",
+    "wpackagist-plugin/redis-cache": "2.2.2",
+    "wpackagist-theme/twentytwentythree": "1.0",
+    "humanmade/s3-uploads": "3.0.6",
+    "koodimonni-language/fr_fr": "*"
+  },
+  "extra": {
+    "wordpress-install-dir": "wp",
+    "installer-paths": {
+      "wp-content/mu-plugins/{$name}/": [
+        "type:wordpress-muplugin",
+        "wpackagist-plugin/redis-cache"
+      ],
+      "wp-content/plugins/{$name}/": [
+        "type:wordpress-plugin"
+      ],
+      "wp-content/themes/{$name}/": [
+        "type:wordpress-theme"
+      ]
+    },
+    "dropin-paths": {
+      "wp-content/languages/": ["vendor:koodimonni-language"],
+      "wp-content/languages/plugins/": ["vendor:koodimonni-plugin-language"],
+      "wp-content/languages/themes/": ["vendor:koodimonni-theme-language"]
+    }
+  },
+  "scripts": {
+    "post-install-cmd": [
+      "cp wp/index.php ./index.php",
+      "sed -i \"s/\\/wp-blog-header/\\/wp\\/wp-blog-header/g\" index.php",
+      "rm -rf wp/wp-content/"
+    ]
+  }
+}
