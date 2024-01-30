@@ -32,7 +32,7 @@
   },
   "require": {
     "php": ">=8.2",
-    "johnpbloch/wordpress": "6.4.2",
+    "johnpbloch/wordpress": "6.4.3",
     "wp-cli/wp-cli-bundle": "2.9.0",
     "boxuk/wp-muplugin-loader": "2.2.0",
     "wpackagist-plugin/redis-cache": "2.5.0",
