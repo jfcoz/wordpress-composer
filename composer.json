@@ -35,7 +35,7 @@
     "johnpbloch/wordpress": "6.5.2",
     "wp-cli/wp-cli-bundle": "2.10.0",
     "boxuk/wp-muplugin-loader": "2.2.0",
-    "wpackagist-plugin/redis-cache": "2.5.1",
+    "wpackagist-plugin/redis-cache": "2.5.2",
     "wpackagist-theme/twentytwentythree": "1.4",
     "humanmade/s3-uploads": "3.0.7",
     "koodimonni-language/fr_fr": "*"
