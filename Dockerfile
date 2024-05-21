@@ -11,7 +11,7 @@ RUN pecl install redis \
 RUN sed -i \
       -e "s#{\$SERVER_NAME:localhost}#:80#" \
       -e "s#public#/var/www/html#" \
-      /etc/Caddyfile
+      /etc/caddy/Caddyfile
 WORKDIR /var/www
 RUN chown -R www-data: .
 USER www-data
