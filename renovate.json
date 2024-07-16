@@ -10,8 +10,12 @@
       "automerge": true
     },
     {
-      "matchUpdateTypes": ["minor", "patch", "pin", "digest"],
+      "matchUpdateTypes": ["minor", "patch"],
       "matchCurrentVersion": "!/^0/",
+      "automerge": true
+    },
+    {
+      "matchUpdateTypes": ["pin", "digest"],
       "automerge": true
     }
   ],
