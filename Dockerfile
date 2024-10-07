@@ -1,4 +1,4 @@
-FROM --platform=$TARGETPLATFORM dunglas/frankenphp@sha256:412b326f1c46ef558dbc40718211cb25c9965cd4467cc9139799d232cdea4a25 AS base
+FROM --platform=$TARGETPLATFORM dunglas/frankenphp@sha256:43fbd298de3ae0f8217e01d977c25fb0c056469b269108d7239284ebc8b67d96 AS base
 USER root
 RUN install-php-extensions \
       exif \
