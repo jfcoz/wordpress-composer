@@ -19,7 +19,7 @@ USER www-data
 FROM --platform=$TARGETPLATFORM base AS build
 USER root
 RUN apt-get update && apt-get install -y zip git
-COPY --from=composer/composer:2-bin@sha256:e815f9ba494ba25344c55bfaaafdcc309145a6da09c96dfde9c68e7514412728 /composer /usr/bin/composer
+COPY --from=composer/composer:2-bin@sha256:edce3c39c93452b17920181bc13e75fc06883dfd4c835eafa182877772880af3 /composer /usr/bin/composer
 USER www-data
 WORKDIR /var/www/html
 ADD --chown=www-data:www-data composer.json .
