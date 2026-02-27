@@ -26,7 +26,7 @@ ADD --chown=www-data:www-data composer.json .
 RUN composer install \
  && composer run-script post-install-cmd
 
-FROM --platform=$TARGETPLATFORM base as prod
+FROM --platform=$TARGETPLATFORM base AS prod
 COPY --from=build /var/www/html /var/www/html
 USER root
 RUN ln -s $(pwd)/html/wp-content/vendor/wp-cli/wp-cli/bin/wp /usr/bin/wp
